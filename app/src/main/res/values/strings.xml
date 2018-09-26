@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidTutorialsPoint</string>
+    <string name="message">Activity LifeCycle, See logs for details.</string>
 </resources>
