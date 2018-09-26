@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidTutorialsPoint</string>
+    <string name="custom_broadcast_example">Custom Broadcast Example</string>
+    <string name="broadcast_custom_intent">Broadcast Custom Intent</string>
 </resources>
