@@ -1,12 +1,18 @@
 package com.example.cas.androidtutorialspoint;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+
+import com.example.cas.androidtutorialspoint.data.PetContract;
+import com.example.cas.androidtutorialspoint.data.PetDbHelper;
 
 public class CatalogActivity extends AppCompatActivity {
 
@@ -24,6 +30,22 @@ public class CatalogActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        displayDatabaseInfo();
+    }
+
+    //not to be included in the final solution
+    private void displayDatabaseInfo(){
+        PetDbHelper mDbHelper=new PetDbHelper(this);
+        SQLiteDatabase db=mDbHelper.getReadableDatabase();
+
+        Cursor cursor=db.rawQuery("SELECT * FROM "+PetContract.PetEntry.TABLE_NAME,null);
+
+        try{
+            TextView displayView=(TextView)findViewById(R.id.text_view_pet);
+            displayView.setText("Number of rows in pets database: "+cursor.getCount());
+        }finally {
+            cursor.close();
+        }
     }
 
     @Override

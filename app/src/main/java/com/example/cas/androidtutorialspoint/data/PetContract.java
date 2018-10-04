@@ -5,6 +5,7 @@ import android.provider.BaseColumns;
 public final class PetContract {
     public PetContract() {
     }
+
     public static final class PetEntry implements BaseColumns{
         public final static String TABLE_NAME="pets";
         public final static String _ID=BaseColumns._ID;
