@@ -19,7 +19,7 @@
         <activity android:name=".EditorActivity"></activity>
         <provider
             android:name=".data.PetProvider"
-            android:authorities="com.example.android.pets"
+            android:authorities="com.example.cas.androidtutorialspoint"
             android:exported="false" />
     </application>
 
