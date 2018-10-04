@@ -2,6 +2,7 @@ package com.example.cas.androidtutorialspoint.data;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -11,6 +12,17 @@ public class PetProvider extends ContentProvider {
 
     public static final String LOG_TAG=PetProvider.class.getSimpleName();
 
+    //URI matcher code for content uri
+    private static final int PETS=100;
+    private static final int PET_ID=101;
+
+    private static final UriMatcher sUriMatcher=new UriMatcher(UriMatcher.NO_MATCH);
+
+    static{
+        //add 2 content URIs to uri matcher
+        sUriMatcher.addURI(PetContract.CONTENT_AUTHORITY,PetContract.PATH_PETS,PETS);
+        sUriMatcher.addURI(PetContract.CONTENT_AUTHORITY,PetContract.PATH_PETS+"/#",PET_ID);
+    }
     @Override
     public boolean onCreate() {
         return false;
