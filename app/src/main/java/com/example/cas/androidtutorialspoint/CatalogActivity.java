@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.cas.androidtutorialspoint.data.PetContract;
@@ -34,6 +35,11 @@ public class CatalogActivity extends AppCompatActivity {
             }
         });
         mDbHelper=new PetDbHelper(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         displayDatabaseInfo();
     }
 
@@ -79,7 +85,9 @@ public class CatalogActivity extends AppCompatActivity {
     }
 
     private void insertPet() {
+
         SQLiteDatabase db=mDbHelper.getWritableDatabase();
+
         ContentValues values=new ContentValues();
         values.put(PetContract.PetEntry.COLUMN_PET_NAME,"Toto");
         values.put(PetContract.PetEntry.COLUMN_PET_BREED,"Terrier");
